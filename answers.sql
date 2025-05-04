@@ -1,7 +1,12 @@
 --Question one 
-create table ProductDetail (OrderID int,  CustomerName text, Products text);   
+create table ProductDetail (
+    OrderID int, 
+    CustomerName varchar (100),
+    Products varchar (100)
+    );   
 insert into ProductDetail (OrderID,  CustomerName, Products)
-values (101, 'John Doe', 'Laptop'),
+values 
+(101, 'John Doe', 'Laptop'),
 (101, 'John Doe', 'Mouse'),
 (102, 'Jane Smith', 'Tablet'),
 (102, 'Jane Smith', 'Keyboard'),
@@ -11,24 +16,27 @@ values (101, 'John Doe', 'Laptop'),
 --Question two
 create table Orders (
     OrderID INT PRIMARY KEY,
-    CustomerName varchar (50));
+    CustomerName varchar (100)
+    );
 insert into Orders (OrderID, CustomerName)
-values (101, 'John Doe'),
+values 
+(101, 'John Doe'),
 (102, 'Jane Smith'),
 (103, 'Emily Clark');
-select * from orders;
 
-CREATE TABLE ProductDetails (
+CREATE TABLE Product (
     OrderID INT,
-    Product VARCHAR(50),
-    Quantity VARCHAR(50),
-    PRIMARY KEY (OrderID, Product)
+    Product VARCHAR(100),
+    Quantity INT,
+    PRIMARY KEY (OrderID, Product),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    );
 );
-insert into ProductDetails (OrderID, Product, Quantity)
-values (101, 'Laptop', 2),
+insert into Product (OrderID, Product, Quantity)
+values 
+(101, 'Laptop', 2),
 (101, 'Mouse', 1),
 (102, 'Tablet', 3),
 (102, 'Keyboard', 1),
 (102, 'Mouse', 2),
 (103, 'Phone', 1);
-select * from ProductDetails;
